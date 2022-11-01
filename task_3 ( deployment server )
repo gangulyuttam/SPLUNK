@@ -1,0 +1,5 @@
+Create an index called "company"
+
+Onboard the data from the application server from the below path in "company" index 
+
+/tmp/company/
