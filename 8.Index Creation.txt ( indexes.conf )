@@ -1,0 +1,92 @@
+---------- Index ----------
+/opt/splunk --- $SPLUNK_HOME
+/opt/splunk/var/lib/splunk - $SPLUNK_DB 
+/opt/splunk/var/log/splunk -- Splunk internal logs 
+
+
+------- index ---
+ ---- hot 
+ ---- warm 
+ ---- cold 
+   --------------- retention policy ---- frozen 
+ ---- thawed 
+ 
+----
+indexes.conf 
+
+/opt/splunk/etc/system/local 
+
+
+# vi indexes.conf 
+
+[<index_name>]
+homePath=/opt/splunk/var/lib/splunk/<index_name>/db 
+coldPath=/opt/splunk/var/lib/splunk/<index_name>/colddb
+thawedPath=/opt/splunk/var/lib/splunk/<index_name>/thaweddb 
+
+
+[training]
+homePath=/opt/splunk/var/lib/splunk/training/db 
+coldPath=/opt/splunk/var/lib/splunk/training/colddb
+thawedPath=/opt/splunk/var/lib/splunk/training/thaweddb 
+
+
+
+------------
+ .tsidx --- time series index file ---- searchable copy of the data 
+ rawdata --- raw log 
+
+ 
+ 
+ 
+ ---------------------------------
+[training]
+homePath=/opt/splunk/var/lib/splunk/training/db 
+coldPath=/opt/splunk/var/lib/splunk/training/colddb
+thawedPath=/opt/splunk/var/lib/splunk/training/thaweddb 
+maxWarmDBCount=1 
+
+--------------------------------------- Retention Period ------------
+
+[training]
+homePath=/opt/splunk/var/lib/splunk/training/db 
+coldPath=/opt/splunk/var/lib/splunk/training/colddb
+thawedPath=/opt/splunk/var/lib/splunk/training/thaweddb 
+maxWarmDBCount=1
+frozenTimePeriodInSecs=60
+
+
+------------------------------- Archive Data -------
+
+[training]
+homePath=/opt/splunk/var/lib/splunk/training/db 
+coldPath=/opt/splunk/var/lib/splunk/training/colddb
+thawedPath=/opt/splunk/var/lib/splunk/training/thaweddb 
+maxWarmDBCount=1
+frozenTimePeriodInSecs=60
+coldToFrozenDir=/data/training
+
+
+----------------------------------Restore Data ------------------- 
+
+# Copy the archived buckets to the thaweddb on the particular index 
+
+cp -R /data/training/db*  /opt/splunk/var/lib/splunk/training/thaweddb/
+
+ OR 
+cd /opt/splunk/var/lib/splunk/training/thawed
+cp -R /data/training/db*  .
+ 
+ 
+ # Run the rebuild command 
+ 
+ # cd /opt/splunk/bin
+ # ./splunk rebuild /opt/splunk/var/lib/splunk/training/thaweddb/db_1634650945_1634650071_0 
+ 
+ 
+ Bucket Rolling Criteria ---- https://splunkonbigdata.com/bucket-rolling-criteria-in-splunk/
+ Restore the archived bucket ---- https://splunkonbigdata.com/retrieving-data-from-archive-state/
+ 
+ 
+ ----- Filtering use case ----
+ https://splunkonbigdata.com/dest_keymetadatasourcetype/
