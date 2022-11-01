@@ -1,0 +1,145 @@
+------Splunk Architectue --------
+1) Universal Forwarder ( UF ) ---- Splunk Universal Forwarder Package 
+
+CLI ( Command Line Interface )
+
+
+CLI + GUI
+----- Splunk Enterprise Package -----
+2) Heavy Forwarder ( HF )
+
+a) Parsing 
+this is ayan 
+this is aniket 
+this is abhay 
+
+
+
+this is ayan 
+
+this is aniket 
+
+this is abhay 
+
+------------------------------------------
+this is ayan, he is from kolkata 
+this is aniket, he is from delhi 
+this is abhay, he is from hyderabad 
+
+
+
+
+this is ayan
+
+he is from kolkata
+ 
+this is aniket
+
+he is from delhi 
+
+this is abhay
+
+he is from hyderabad 
+
+--------Masking -------
+this is ayan and his acc no is 994628655
+this is aniket and his acc no is 205709527053
+this is abhay and his acc no is 90727952057
+
+
+this is ayan and his acc no is xxxx8655
+this is aniket and his acc no is xxxx7053
+this is abhay and his acc no is xxxx2057
+
+
+b) Filtering 
+
+this is ayan 
+this is aniket 
+this is abhay 
+
+
+
+this is aniket 
+this is abhay 
+
+
+------------------
+
+3) Indexer ( IDX )
+
+indices 
+
+index ---
+
+windows --
+os ---
+
+
+-------------------- 3 metadata -------
+                            ----- host --- ip address / hostname / dns  of the application server ( 198.56.34.10 , liux-001 , liux-001.wipro.com )
+							----- source --- actual path of the data ( C:\Windows\Temp\abc.log | /var/log/secure )
+							----- sourcetype --- C:\Windows\Temp\abc.log ---- crashlog 
+							                     C:\Windows\Temp\bcd.log 
+												 
+												 C:\Windows\Temp\abc.json ------ infolog
+												 C:\Windows\Temp\zz.json
+
+index=windows sourcetype=infolog
+
+4) Search Head ( SH )
+5) Deployment Server ( DS )
+
+6) License Master ( LM )
+
+a) License Stacking -- 5GB + 100GB = 105GB 
+
+b) License Pooling ---
+
+Pool-A --- 90 GB --- indexers 
+Pool-B --- 15 GB  --- SH,DS 
+
+
+---- Pool --- 105 GB 
+
+--------
+>5 times viloation in roling period of 30 days 
+
+2oct ---- 1 
+10oct -- 2
+15oct -- 3
+23 ----4 
+25 ---- 5 
+26 ---- 
+
+1nov 
+
+----------------------
+< 6.5 Splunk Version ---- Enforcement License ---  Indexing Continues --- Searching Blocks 
+>=6.5 Splunk Version --- No-Enforcement License --- Indexing Continues -- Searching Continues ---- Splunk Can take legal action 
+
+https://splunkonbigdata.com/splunk-licensing-enforcement-vs-no-enforcement/
+-------------------------------------------------------------------------------------------------------
+
+License Master Goes Down ----- 
+---- > 72 hours ---  Indexing Continues --- Searching Blocks 
+
+-----https://splunkonbigdata.com/what-happens-when-license-master-goes-down/
+
+
+----------------------------------------------------------------
+License Expires -------
+
+Indexing Continues --- Searching Blocks 
+
+----- 30 days 
+
+
+
+
+
+
+
+
+
+
