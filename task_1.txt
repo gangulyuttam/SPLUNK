@@ -1,0 +1,14 @@
+Do new onboarding 
+
+index=test 
+
+sourcetype=traininglog 
+
+
+path --- /tmp/company/
+
+any .txt format of log 
+------ 
+Do the linebreaking for a new sourcetype for ? and  , 
+
+---------------------
