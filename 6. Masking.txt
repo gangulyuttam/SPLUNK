@@ -1,0 +1,112 @@
+------- Masking -------
+
+HF >>>>
+
+# cd $SPLUNK_HOME/etc/system/local 
+
+# cd /opt/splunk/etc/system/local
+
+props.conf 
+
+# vi props.conf
+
+[<sourcetype_name>]
+arrtibute=value 
+
+-------- Masking --------------------
+SEDCMD-<class_name>=s/<old_pattern>/<new_pattern>/g 
+
+
+--------------------------------- Hard Code Masking -------
+
+this is ayan and he is from kolkata 
+this is aniket and he is from delhi 
+this is abhay and he is from mumbai 
+Ayan went to market 
+
+------
+
+this is raja and he is from kolkata 
+
+this is aniket and he is from delhi 
+
+this is abhay and he is from mumbai 
+
+raja went to market 
+
+------------
+SEDCMD-namemask=s/(?i)ayan /raja/g
+
+-------------------------------- Full Masking ----------------------
+
+This                                                     is ayan and his acc number is 4241424
+this                 is   aniket and his acc number is 523525
+he is abhay and his acc number is 059205972
+i am ayan and my acc number is 25266652
+
+
+[
+
+(
+&
+*
+
+
+\&
+
+
+
+This                                                     is ayan and his acc number is xxxx
+this                 is   aniket and his acc number is xxxx
+he is abhay and his acc number is xxxx
+i am ayan and my acc number is xxxx
+
+
+
+PCRE --- Pearl Compatiable Regular Expression 
+
+
+\w - character or alphabate 
+\d - digit 
+\s - space 
+? - 0 or 1 occurance
++ - 1 or more occurances
+.* - All or Everyting 
+
+
+
+\[
+\(
+
+
+This is ayan and his acc number is 4241424
+
+.*\s+\d+
+
+(\w+\s+\w+\s+\w+.*\s+)(\d+)
+     1                  2 
+	 
+
+SEDCMD-accountmask=s/(\w+\s+\w+\s+\w+.*\s+)(\d+)/\1xxxx/g
+
+
+------------------------------------------------- Partial Masking ------------------------------
+
+This is ayan he logged in from 198.78.89.67 using port  234
+this is aniket and he logged out from 192.168.56.78 using port 23 
+this is abhay and he logged in from 10.56.78.23 using port 2489 
+
+
+(\w+.*\s+)(\d+\.\d+)(\.\d+\.\d+\s+.*\s+)(\d)(\d+)
+
+  1           2            3              4   5      
+
+
+
+
+This is ayan he logged in from xxx.xxx.89.67 using port x34
+this is aniket and he logged out from xxx.xxx.56.78 using port x3 
+this is abhay and he logged in from xxx.xxx.78.23 using port x489
+
+
+SEDCMD-ipmask=s/(\w+.*\s+)(\d+\.\d+)(\.\d+\.\d+\s+.*\s+)(\d)(\d+)/\1xxx.xxx\3x\5/g
