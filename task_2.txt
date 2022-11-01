@@ -1,0 +1,28 @@
+This                                                     is ayan and his acc number is 12314
+this                 is aniket and his acc number is 1412414
+he              is abhay and his acc number is 241421
+i             am ayan and my acc number is 141414
+
+
+Q1: Supress the spaces to a single one with masking 
+
+This is ayan and his acc number is 12314
+this is aniket and his acc number is 1412414
+he is abhay and his acc number is 241421
+i am ayan and my acc number is 141414
+
+
+-------------------------------------------------------------------
+
+
+This is ayan he logged in from 198.78.89.67 using port  26
+this is aniket and he logged out from 192.168.56.78 using port 23 
+this is abhay and he logged in from 10.56.78.23 using port 24
+
+
+Q2: Mask the portions as given below.
+
+
+This is ayan he logged in from 198.xxx.89.xxx using port  2x
+this is aniket and he logged out from 192.xxx.56.xxx using port 2x 
+this is abhay and he logged in from 10.xxx.78.xxx using port 2x
