@@ -1,0 +1,33 @@
+------ License Master ------
+
+
+------ License Slave ------
+GUI 
+Go to the license slave >>>> Settings >>> Licensing 
+
+Select Change to slave ....
+
+----- Select Different Splunk Instance as a License Slave 
+
+put the ip address of the license master along with the 8089 port .
+
+---------
+
+>5 times in rolling period of 30 days 
+
+
+<6.5 version of splunk ---- Enforcement License ---- Indexing Continues --- Searching Stopped 
+>= 6.5                 ---- No-Enforcement License --- Indexing Continues-- Searching Continues --- Splunk can take some leagal action .
+
+https://splunkonbigdata.com/splunk-licensing-enforcement-vs-no-enforcement/
+
+
+--------------- License Master Goes Down --------
+
+>72 hours  ---- Indexing Continues --- Searching Stopped 
+
+https://splunkonbigdata.com/what-happens-when-license-master-goes-down/
+
+------------- License Expires --------
+
+---- Indexing Continues --- Searching Stopped 
